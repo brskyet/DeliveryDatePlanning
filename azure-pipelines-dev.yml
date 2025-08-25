@@ -1,0 +1,46 @@
+﻿pool: 'Docker_Developer'
+
+trigger: none
+
+variables:
+  environment: 'Development'
+
+steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET 6 SDK'
+    inputs:
+      packageType: 'sdk'
+      version: '6.0.x'
+      performMultiLevelLookup: true
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: '**/*.csproj'
+      feedsToUse: config
+      nugetConfigPath: 'nuget.config'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Run unit tests'
+    inputs:
+      command: test
+      projects: '**/*UnitTest/*.csproj'
+      arguments: '--configuration $(buildConfiguration)'
+  
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest
+      testRunTitle: DeliveryDatePlanning Unit Tests
+      testResultsFiles: '*.trx'
+      searchFolder: '$(Agent.TempDirectory)'
+
+  - task: DockerCompose@0
+    displayName: 'Run a Docker Compose command'
+    env:
+      ConsulToken: $(ConsulToken)
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerComposeFile: 'docker-compose.yml'
+      dockerComposeFileArgs: 'ENVIRONMENT=$(environment) ConsulToken=$(ConsulToken)'
+      dockerComposeCommand: 'up -d --build'

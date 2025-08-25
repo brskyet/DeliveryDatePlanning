@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDatePlanning.WebApi", "DeliveryDatePlanning.WebApi\DeliveryDatePlanning.WebApi.csproj", "{286F221E-C33C-449A-9B6F-CEB10C943D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDatePlanning.BackgroundService", "DeliveryDatePlanning.BackgroundService\DeliveryDatePlanning.BackgroundService.csproj", "{2188B282-BE5D-4E26-9A57-F88A4F5102D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDatePlanning.Data", "DeliveryDatePlanning.Data\DeliveryDatePlanning.Data.csproj", "{8078F275-78C8-4A01-9AE5-9C9905CC00D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDatePlanning.Domain", "DeliveryDatePlanning.Domain\DeliveryDatePlanning.Domain.csproj", "{C4E8F8F8-6C75-48AE-91F1-825260C4D3A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDatePlanning.Protocol", "DeliveryDatePlanning.Protocol\DeliveryDatePlanning.Protocol.csproj", "{36E6BDDA-A11A-4491-B793-772E701193DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDatePlanning.Application", "DeliveryDatePlanning.Application\DeliveryDatePlanning.Application.csproj", "{53BF7BD9-42A0-4000-AA3E-DBD9387477B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryDatePlanning.UnitTest", "DeliveryDatePlanning.UnitTest\DeliveryDatePlanning.UnitTest.csproj", "{57AA2F91-1484-4A7B-BF15-F0C121236518}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{286F221E-C33C-449A-9B6F-CEB10C943D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{286F221E-C33C-449A-9B6F-CEB10C943D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{286F221E-C33C-449A-9B6F-CEB10C943D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{286F221E-C33C-449A-9B6F-CEB10C943D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2188B282-BE5D-4E26-9A57-F88A4F5102D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2188B282-BE5D-4E26-9A57-F88A4F5102D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2188B282-BE5D-4E26-9A57-F88A4F5102D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2188B282-BE5D-4E26-9A57-F88A4F5102D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8078F275-78C8-4A01-9AE5-9C9905CC00D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8078F275-78C8-4A01-9AE5-9C9905CC00D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8078F275-78C8-4A01-9AE5-9C9905CC00D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8078F275-78C8-4A01-9AE5-9C9905CC00D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E8F8F8-6C75-48AE-91F1-825260C4D3A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E8F8F8-6C75-48AE-91F1-825260C4D3A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E8F8F8-6C75-48AE-91F1-825260C4D3A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E8F8F8-6C75-48AE-91F1-825260C4D3A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36E6BDDA-A11A-4491-B793-772E701193DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36E6BDDA-A11A-4491-B793-772E701193DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36E6BDDA-A11A-4491-B793-772E701193DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36E6BDDA-A11A-4491-B793-772E701193DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53BF7BD9-42A0-4000-AA3E-DBD9387477B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BF7BD9-42A0-4000-AA3E-DBD9387477B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BF7BD9-42A0-4000-AA3E-DBD9387477B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BF7BD9-42A0-4000-AA3E-DBD9387477B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57AA2F91-1484-4A7B-BF15-F0C121236518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57AA2F91-1484-4A7B-BF15-F0C121236518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57AA2F91-1484-4A7B-BF15-F0C121236518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57AA2F91-1484-4A7B-BF15-F0C121236518}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

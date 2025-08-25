@@ -1,0 +1,33 @@
+﻿version: "3.4"
+
+services:
+  delivery-date-planning-webapi:
+    restart: on-failure
+    image: delivery-date-planning-webapi
+    environment:
+      - ENVIRONMENT=Development
+      - ConsulToken=${ConsulToken}
+    build:
+      context: .
+      dockerfile: DeliveryDatePlanning.WebApi/Dockerfile
+    logging:
+      driver: "fluentd"
+      options:
+        tag: "delivery-date-planning-webapi"
+    ports:
+      - "4511:80"
+
+
+  delivery-date-planning-service:
+    image: delivery-date-planning-service
+    restart: on-failure
+    environment:
+      - ENVIRONMENT=Development
+      - ConsulToken=${ConsulToken}
+    build:
+      context: .
+      dockerfile: DeliveryDatePlanning.BackgroundService/Dockerfile
+    logging:
+      driver: "fluentd"
+      options:
+        tag: "delivery-date-planning-service"

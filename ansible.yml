@@ -1,0 +1,81 @@
+﻿- hosts: "{{ 'dock-prod-nodes' if ENVIRONMENT == 'Production' else 'dock-stag-nodes'}}"
+  tasks:
+
+    - name: pull an image
+      docker_image:
+        name: "{{ REGISTRY }}/{{ IMAGE }}:{{ BUILD }}"
+        source: pull
+      vars:
+        REGISTRY: "pandora.lcl"
+        IMAGE: "delivery-date-planning-webapi"
+        BUILD: "latest"
+
+    - name: pull an image
+      docker_image:
+        name: "{{ REGISTRY }}/{{ IMAGE }}:{{ BUILD }}"
+        source: pull
+      vars:
+        REGISTRY: "pandora.lcl"
+        IMAGE: "delivery-date-planning-service"
+        BUILD: "latest"
+
+- hosts: "{{ 'dock-prod-m1' if ENVIRONMENT == 'Production' else 'dock-stag-m1'}}"
+  tasks:
+
+    - name: Copy docker-compose.yml for docker stack deploy
+      copy:
+        src: docker-compose.yml
+        dest: /tmp/
+
+    - name: Deploy stack from base compose file and override the web service
+      docker_stack:
+        state: present
+        name: "{{ STACK }}"
+
+        compose:
+          - /tmp/docker-compose.yml
+
+          - version: '3.4'
+
+            services:
+              delivery-date-planning-webapi:
+                image: "{{ REGISTRY }}/{{ IMAGE_API }}:{{ BUILD }}"
+                environment:
+                  ENVIRONMENT: "{{ ENVIRONMENT }}"
+                  ConsulToken: "{{ ConsulToken }}"
+                logging:
+                  driver: "fluentd"
+                  options:
+                    tag: "{{ STACK }}_{{ 'production' if ENVIRONMENT == 'Production' else 'staging'}}"
+              delivery-date-planning-service:
+                image: "{{ REGISTRY }}/{{ IMAGE_SERVICE }}:{{ BUILD }}"
+                environment:
+                  ENVIRONMENT: "{{ ENVIRONMENT }}"
+                  ConsulToken: "{{ ConsulToken }}"
+                logging:
+                  driver: "fluentd"
+                  options:
+                    tag: "{{ STACK }}_{{ 'production' if ENVIRONMENT == 'Production' else 'staging'}}"
+      vars:
+        REGISTRY: "pandora.lcl"
+        IMAGE_API: "delivery-date-planning-webapi"
+        IMAGE_SERVICE: "delivery-date-planning-service"
+        BUILD: "latest"
+        STACK: "delivery-date-planning"
+
+- hosts: nginx
+  tasks:
+    - name: Check and Create upstream to Nginx
+      uri:
+        url: http://127.0.0.1:9301/nginx/add/include
+        method: POST
+        body:
+          project: "{{ NAME }}"
+          port: "{{ PORT }}"
+        status_code: 201
+        body_format: json
+      when: ENVIRONMENT == 'Production'
+
+      vars:
+        NAME: "delivery-date-planning-webapi"
+        PORT: 4511

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Consul" Version="1.6.10.5" />
+        <PackageReference Include="NLog.Web.AspNetCore" Version="5.1.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.3.1" />
+        <PackageReference Include="Winton.Extensions.Configuration.Consul" Version="3.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DeliveryDatePlanning.Application\DeliveryDatePlanning.Application.csproj" />
+      <ProjectReference Include="..\DeliveryDatePlanning.Data\DeliveryDatePlanning.Data.csproj" />
+      <ProjectReference Include="..\DeliveryDatePlanning.Protocol\DeliveryDatePlanning.Protocol.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MongoDB.Bson" Version="2.15.1" />
+      <PackageReference Include="PickPoint.Models" Version="2.6.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PickPoint.DeliveryDatePlanning.Application\PickPoint.DeliveryDatePlanning.Application.csproj" />
+    </ItemGroup>
+
+</Project>
